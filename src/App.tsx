@@ -42,7 +42,6 @@ function App() {
     const callAmount = maxBet - cpu.bet;
 
     // CPUの行動パターン（単純なランダム戦略）
-    // より複雑なAIロジックに置き換えることも可能
     const randomAction = Math.random();
     
     if (callAmount > 0) {
@@ -55,7 +54,7 @@ function App() {
         playerAction('call');
       } else {
         // 30%の確率でレイズ
-        const raiseAmount = callAmount + Math.floor(Math.random() * 3 + 1) * 5; // 5, 10, 15のいずれか
+        const raiseAmount = callAmount + Math.floor(Math.random() * 3 + 1) * 5;
         playerAction('raise', raiseAmount);
       }
     } else {
@@ -65,7 +64,7 @@ function App() {
         playerAction('check');
       } else {
         // 50%の確率でベット
-        const betAmount = Math.floor(Math.random() * 3 + 1) * 5; // 5, 10, 15のいずれか
+        const betAmount = Math.floor(Math.random() * 3 + 1) * 5;
         playerAction('raise', betAmount);
       }
     }
