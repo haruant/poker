@@ -5,11 +5,45 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
   animation: cutInAnimation 1.5s ease-in-out;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
 }
 
 .cut-in img {
   max-width: 300px;
   height: auto;
+  display: block;
+}
+
+.cut-in-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.check .cut-in-text {
+  color: #4CAF50;
+}
+
+.call .cut-in-text {
+  color: #2196F3;
+}
+
+.raise .cut-in-text {
+  color: #FFC107;
+}
+
+.bet .cut-in-text {
+  color: #FF9800;
+}
+
+.win .cut-in-text {
+  color: #F44336;
+  font-size: 4rem;
 }
 
 @keyframes cutInAnimation {
@@ -36,10 +70,26 @@
   .cut-in img {
     max-width: 200px;
   }
+  
+  .cut-in-text {
+    font-size: 2.5rem;
+  }
+  
+  .win .cut-in-text {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 480px) {
   .cut-in img {
     max-width: 150px;
+  }
+  
+  .cut-in-text {
+    font-size: 2rem;
+  }
+  
+  .win .cut-in-text {
+    font-size: 2.5rem;
   }
 } 

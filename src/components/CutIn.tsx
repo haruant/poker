@@ -11,18 +11,21 @@ interface CutInProps {
 const CutIn: React.FC<CutInProps> = ({ type, isVisible }) => {
   if (!isVisible) return null;
 
+  // GitHub Pagesのベースパス
+  const basePath = '/texas-holdem-poker/';
+
   const getCutInImage = () => {
     switch (type) {
       case 'check':
-        return '/images/cutin/check.png';
+        return `${basePath}images/cutin/check.png`;
       case 'raise':
-        return '/images/cutin/raise.png';
+        return `${basePath}images/cutin/raise.png`;
       case 'call':
-        return '/images/cutin/call.png';
+        return `${basePath}images/cutin/call.png`;
       case 'bet':
-        return '/images/cutin/bet.png';
+        return `${basePath}images/cutin/bet.png`;
       case 'win':
-        return '/images/cutin/win.png';
+        return `${basePath}images/cutin/win.png`;
       default:
         return '';
     }
