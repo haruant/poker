@@ -1,0 +1,95 @@
+.game-controls {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem 0;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 100px;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.action-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.fold {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.check {
+  background-color: #388e3c;
+  color: white;
+}
+
+.call {
+  background-color: #1976d2;
+  color: white;
+}
+
+.raise {
+  background-color: #f57c00;
+  color: white;
+}
+
+.raise-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.raise-amount-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.amount-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: #424242;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.amount-button:hover {
+  background-color: #616161;
+}
+
+.amount-display {
+  background-color: #212121;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  min-width: 40px;
+  text-align: center;
+} 

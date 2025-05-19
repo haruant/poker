@@ -1,0 +1,198 @@
+.poker-table {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.table-felt {
+  background-color: #009000;
+  border-radius: 200px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 15px solid #613e1e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
+}
+
+.community-cards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.empty-community-cards {
+  width: 300px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.player-spot {
+  position: absolute;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.active-player {
+  background-color: rgba(255, 255, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+}
+
+.folded-player {
+  opacity: 0.5;
+}
+
+.player-info {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.player-chips {
+  font-size: 14px;
+}
+
+.player-bet {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f5d742;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.player-cards {
+  display: flex;
+  gap: 5px;
+}
+
+.card-placeholder {
+  width: 60px;
+  height: 80px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.dealer-button {
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid #613e1e;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .poker-table {
+    height: 300px;
+  }
+  
+  .table-felt {
+    border-width: 10px;
+  }
+  
+  .community-cards {
+    gap: 5px;
+    padding: 5px;
+  }
+  
+  .empty-community-cards {
+    width: 200px;
+    height: 60px;
+    font-size: 14px;
+  }
+  
+  .player-spot {
+    width: 120px;
+    padding: 5px;
+  }
+  
+  .player-name {
+    font-size: 14px;
+  }
+  
+  .player-chips {
+    font-size: 12px;
+  }
+  
+  .dealer-button {
+    width: 25px;
+    height: 25px;
+    bottom: -25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .poker-table {
+    height: 250px;
+  }
+  
+  .table-felt {
+    border-width: 8px;
+  }
+  
+  .community-cards {
+    gap: 2px;
+  }
+  
+  .empty-community-cards {
+    width: 150px;
+    height: 50px;
+    font-size: 12px;
+  }
+  
+  .player-spot {
+    width: 90px;
+  }
+  
+  .player-name {
+    font-size: 12px;
+  }
+  
+  .player-chips {
+    font-size: 10px;
+  }
+  
+  .dealer-button {
+    width: 20px;
+    height: 20px;
+    bottom: -20px;
+    font-size: 12px;
+  }
+} 
