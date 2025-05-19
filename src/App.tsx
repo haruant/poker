@@ -120,6 +120,11 @@ function App() {
         setWinner(winningPlayer);
         setGameState('showdown');
         
+        // 勝者が人間プレイヤーの場合のみカットイン表示
+        if (winningPlayer && winningPlayer.id === 1) {
+          showCutInAnimation('win');
+        }
+        
         // 勝者にポットを与える
         if (winningPlayer) {
           setPlayers(players.map(player => 
@@ -155,15 +160,22 @@ function App() {
     const updatedPlayers = [...players];
     const player = updatedPlayers[currentPlayer];
     
+    // 人間プレイヤー（index 0）の場合のみカットインを表示
+    const showActionCutIn = (actionType: 'check' | 'call' | 'raise' | 'bet') => {
+      if (currentPlayer === 0) {
+        showCutInAnimation(actionType);
+      }
+    };
+    
     switch (action) {
       case 'fold':
         player.isActive = false;
         break;
       case 'check':
-        showCutInAnimation('check');
+        showActionCutIn('check');
         break;
       case 'call':
-        showCutInAnimation('call');
+        showActionCutIn('call');
         const maxBet = Math.max(...players.map(p => p.bet));
         const callAmount = maxBet - player.bet;
         player.chips -= callAmount;
@@ -171,7 +183,7 @@ function App() {
         setPot(pot + callAmount);
         break;
       case 'raise':
-        showCutInAnimation('raise');
+        showActionCutIn('raise');
         player.chips -= amount;
         player.bet += amount;
         setPot(pot + amount);
@@ -191,7 +203,10 @@ function App() {
     const allBetsEqual = activePlayers.every(p => p.bet === activePlayers[0].bet);
     
     if (activePlayers.length === 1) {
-      showCutInAnimation('win');
+      // 勝者が人間プレイヤーの場合のみカットイン表示
+      if (activePlayers[0].id === 1) {
+        showCutInAnimation('win');
+      }
       setWinner(activePlayers[0]);
       setGameState('showdown');
       // 勝者にポットを与える
