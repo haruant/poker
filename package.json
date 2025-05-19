@@ -2,7 +2,7 @@
   "name": "texas-holdem-poker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://[あなたのユーザー名].github.io/texas-holdem-poker",
+  "homepage": "https://haruant.github.io/texas-holdem-poker",
   "dependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
