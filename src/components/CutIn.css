@@ -1,0 +1,45 @@
+.cut-in {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  animation: cutInAnimation 1.5s ease-in-out;
+}
+
+.cut-in img {
+  max-width: 300px;
+  height: auto;
+}
+
+@keyframes cutInAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .cut-in img {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cut-in img {
+    max-width: 150px;
+  }
+} 

@@ -3,6 +3,7 @@ import './App.css';
 import PokerTable from './components/PokerTable';
 import GameControls from './components/GameControls';
 import PlayerInfo from './components/PlayerInfo';
+import CutIn from './components/CutIn';
 import { CardType, PlayerType, GameState } from './types/gameTypes';
 import { dealCards, evaluateHands } from './utils/gameLogic';
 
@@ -18,6 +19,8 @@ function App() {
   const [pot, setPot] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [winner, setWinner] = useState<PlayerType | null>(null);
+  const [cutInType, setCutInType] = useState<'check' | 'raise' | 'call' | 'bet' | 'win' | null>(null);
+  const [showCutIn, setShowCutIn] = useState(false);
 
   // CPUプレイヤーの自動行動のための副作用
   useEffect(() => {
@@ -139,6 +142,15 @@ function App() {
     setCurrentPlayer(0);
   };
 
+  // カットインを表示する関数
+  const showCutInAnimation = (type: 'check' | 'raise' | 'call' | 'bet' | 'win') => {
+    setCutInType(type);
+    setShowCutIn(true);
+    setTimeout(() => {
+      setShowCutIn(false);
+    }, 1500);
+  };
+
   const playerAction = (action: 'fold' | 'check' | 'call' | 'raise', amount = 0) => {
     // 現在のプレイヤーのアクションを処理
     const updatedPlayers = [...players];
@@ -149,10 +161,10 @@ function App() {
         player.isActive = false;
         break;
       case 'check':
-        // チェックは何もしない
+        showCutInAnimation('check');
         break;
       case 'call':
-        // 最大ベットに合わせる
+        showCutInAnimation('call');
         const maxBet = Math.max(...players.map(p => p.bet));
         const callAmount = maxBet - player.bet;
         player.chips -= callAmount;
@@ -160,7 +172,7 @@ function App() {
         setPot(pot + callAmount);
         break;
       case 'raise':
-        // ベットを上げる
+        showCutInAnimation('raise');
         player.chips -= amount;
         player.bet += amount;
         setPot(pot + amount);
@@ -180,7 +192,7 @@ function App() {
     const allBetsEqual = activePlayers.every(p => p.bet === activePlayers[0].bet);
     
     if (activePlayers.length === 1) {
-      // 1人だけ残った場合、その人が勝者
+      showCutInAnimation('win');
       setWinner(activePlayers[0]);
       setGameState('showdown');
       // 勝者にポットを与える
@@ -236,6 +248,8 @@ function App() {
           <p>CPUのターンです... ({players[currentPlayer].name})</p>
         )}
       </div>
+      
+      <CutIn type={cutInType!} isVisible={showCutIn} />
     </div>
   );
 }
